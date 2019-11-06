@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router,Link,Route} from 'react-router-dom';
-import Detail from './Detail';
 import Topic from './Topic';
 import Pages from './Pages'
 

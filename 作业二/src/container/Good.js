@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import {BrowserRouter as Router,Link,Route} from 'react-router-dom';
+import Topic from './Topic';
+import Pages from './Pages'
 
-import Detail from './Detail'
 export default class Good extends Component {
     constructor(){
         super();
@@ -27,8 +28,9 @@ export default class Good extends Component {
             <div className='list'>    
                  <ul>
                  <div>
-                     <Route path={url+'/detail'} component={Detail}/>
-                 </div>
+                 <Route path={url+'/page:item'} component={Pages}/>
+                 <Route path={url+'/detail:index'} component={Topic}/>
+              </div>
                      {
                         this.state.data.map((item,index)=>(
                             <li key={index}>
@@ -40,7 +42,7 @@ export default class Good extends Component {
                                 </div>
                                 <div style={{width:860,float:'right',marginTop:-30}}>
                                      <span><button style={{backgroundColor:'rgb(47, 161, 47)'}}>精华</button></span>&nbsp;  
-                                     <Link to={url+'/detail'}>{item.title}</Link>&nbsp;&nbsp;&nbsp;&nbsp;
+                                     <Link to={url+'/detail'+index}>{item.title}</Link>&nbsp;&nbsp;&nbsp;&nbsp;
                                      <span style={{fontSize:10,float:'right'}}>1小时前</span>
                                      <img style={{width:20,height:20,marginRight:10,float:'right'}} src={item.author.avatar_url} alt=''/>
                                 </div>
@@ -52,7 +54,7 @@ export default class Good extends Component {
                   <div className='page'>
                 {
                     [1,2,3,4,5,6,7,8,9,10].map((item)=>(
-                         <li style={{float:'left'}} key={item}><Link to={'/topic/'+item}>{item}</Link></li>
+                         <li style={{float:'left'}} key={item}><Link to={url+'/page'+item}>{item}</Link></li>
                      ))              
                 }
            </div> 
